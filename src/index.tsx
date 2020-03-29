@@ -1,17 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+
+import { WeightedTile, TileWeight } from "./components/Goldenhaus/interfaces";
+import Goldenhaus from "./components/Goldenhaus/Goldenhaus";
+import "./index.css";
+
+// TODO: Remove in future
+const tiles: ReadonlyArray<WeightedTile> = Array.from({ length: 10 }).map(
+  () => ({
+    component: <div />,
+    weight: (Math.floor(Math.random() * 6) + 1) as TileWeight
+  })
+);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Goldenhaus tiles={tiles} />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
